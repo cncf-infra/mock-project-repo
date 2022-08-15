@@ -1,0 +1,9 @@
+name: Assign reviewers from OWNERS file
+on:
+  pull_request:
+    branches: ["main"]
+jobs:
+  assign_reviewers:
+  steps:
+    - name: Start hook plugin action
+      uses: actions/cncf-infra/prow-github-action@main
