@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Start hook plugin action
-        uses: cncf-infra/prow-github-action@v1
+        uses: cncf-infra/prow-github-action@main
