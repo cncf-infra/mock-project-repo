@@ -4,8 +4,9 @@ on:
   pull_request:
     branches: ["main"]
 jobs:
-  assign_reviewers:
+  prow_github_hook:
+    name: Prow Github Hook
     runs-on: ubuntu-latest
     steps:
       - name: Start hook plugin action
-        uses: actions/cncf-infra/prow-github-action@main
+        uses: cncf-infra/prow-github-action@v1
