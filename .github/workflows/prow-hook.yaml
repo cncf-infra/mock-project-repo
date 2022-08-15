@@ -1,4 +1,4 @@
-name: Assign reviewers from OWNERS files
+name: Assign reviewers from OWNERS file
 on:
   push:
   pull_request:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
       - name: Start hook plugin action
         uses: cncf-infra/prow-github-action@main
