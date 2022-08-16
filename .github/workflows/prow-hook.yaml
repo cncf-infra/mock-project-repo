@@ -2,23 +2,36 @@ name: Assign reviewers from OWNERS files
 on:
   # via gh workflow run
   workflow_dispatch:
-  push:
-  pull_request:
-    branches: ["main"]
+  # push:
+  # pull_request:
+  #   branches: ["main"]
 jobs:
   prow_github_hook:
     name: Prow Github Hook
+    services:
+      hook:
+        image: ghcr.io/cncf-infra/prow-github-action:latest
+        ports:
+          - 8080:80
+        env:
+          HMAC: ${{ secrets.HMAC }}
+          HOOK_CONFIG: ${{ secrets.HOOK_CONFIG }}
+          PLUGIN_CONFIG: ${{ secrets.PLUGIN_CONFIG }}
+        credentials:
+          username: ${{ github.actor }}
+          password: ${{ secrets.github_token }}
+        options: --name "hook" --entrypoint "/var/run/ko/svc-entrypoint.sh"
+        volumes:
+          - ${{ github.workspace }}:/workspace
+        # would be good if the container had a healthcheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
       - name: Start hook plugin action
         uses: cncf-infra/prow-github-action@main
         with:
-          plugin: ${{ secrets.PLUGIN }}
           hmac: ${{ secrets.HMAC }}
-          gh-app-id: ${{ secrets.GH_APP_ID }}
-          gh-app-pk: ${{ secrets.GH_APP_PK }}
           hook-config: ${{ secrets.HOOK_CONFIG }}
           plugin-config: ${{ secrets.PLUGIN_CONFIG }}
