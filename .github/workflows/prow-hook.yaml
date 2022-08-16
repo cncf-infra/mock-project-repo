@@ -1,4 +1,4 @@
-name: Assign reviewers from OWNERS files
+name: Assign reviewers from OWNERS filess
 on:
   push:
   pull_request:
