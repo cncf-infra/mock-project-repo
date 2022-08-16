@@ -1,5 +1,7 @@
 name: Assign reviewers from OWNERS files
 on:
+  # via gh workflow run
+  workflow_dispatch:
   push:
   pull_request:
     branches: ["main"]
