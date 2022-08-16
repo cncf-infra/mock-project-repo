@@ -13,3 +13,10 @@ jobs:
       #   uses: mxschmitt/action-tmate@v3
       - name: Start hook plugin action
         uses: cncf-infra/prow-github-action@main
+        with:
+          plugin: ${{ secrets.PLUGIN }}
+          hmac: ${{ secrets.HMAC }}
+          gh-app-id: ${{ secrets.GH_APP_ID }}
+          gh-app-pk: ${{ secrets.GH_APP_PK }}
+          hook-config: ${{ secrets.HOOK_CONFIG }}
+          plugin-config: ${{ secrets.PLUGIN_CONFIG }}
