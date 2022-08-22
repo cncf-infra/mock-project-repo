@@ -36,12 +36,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo $GITHUB_EVENT_NAME
-        run: echo GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME
+        run: echo GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME | tee event.name
       - name: cat event.json
-        run: cat $GITHUB_EVENT_PATH | jq .
+        run: cat $GITHUB_EVENT_PATH | jq . | tee event.json
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts
+          path: |
+            event.name
+            event.json
       # - uses: actions/checkout@v2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
       # - name: Start hook plugin action
       #   uses: cncf-infra/prow-github-action@main
       #   with:
