@@ -2,36 +2,43 @@ name: Assign reviewers from OWNERS files
 on:
   # via gh workflow run
   workflow_dispatch:
-  # push:
+  issues:
+  issues_comment:
+  pull_request:
+  pull_request_review:
+  pull_request_review_comment:
+  push:
+  status:
   # pull_request:
   #   branches: ["main"]
+permissions: read-all|write-all
+# permissions:
+#   actions: read|write|none
+#   checks: read|write|none
+#   contents: read|write|none
+#   deployments: read|write|none
+#   id-token: read|write|none
+#   issues: read|write|none
+#   discussions: read|write|none
+#   packages: read|write|none
+#   pages: read|write|none
+#   pull-requests: read|write|none
+#   repository-projects: read|write|none
+#   security-events: read|write|none
+#   statuses: read|write|none
 jobs:
   prow_github_hook:
     name: Prow Github Hook
-    services:
-      hook:
-        image: ghcr.io/cncf-infra/prow-github-action:latest
-        ports:
-          - 8080:80
-        env:
-          HMAC: ${{ secrets.HMAC }}
-          HOOK_CONFIG: ${{ secrets.HOOK_CONFIG }}
-          PLUGIN_CONFIG: ${{ secrets.PLUGIN_CONFIG }}
-        credentials:
-          username: ${{ github.actor }}
-          password: ${{ secrets.github_token }}
-        options: --name "hook" --entrypoint "/var/run/ko/svc-entrypoint.sh"
-        volumes:
-          - ${{ github.workspace }}:/workspace
-        # would be good if the container had a healthcheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: cat event.json
+        run: cat $GITHUB_EVENT_PATH | jq .
+      # - uses: actions/checkout@v2
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
-      - name: Start hook plugin action
-        uses: cncf-infra/prow-github-action@main
-        with:
-          hmac: ${{ secrets.HMAC }}
-          hook-config: ${{ secrets.HOOK_CONFIG }}
-          plugin-config: ${{ secrets.PLUGIN_CONFIG }}
+      # - name: Start hook plugin action
+      #   uses: cncf-infra/prow-github-action@main
+      #   with:
+      #     hmac: ${{ secrets.HMAC }}
+      #     hook-config: ${{ secrets.HOOK_CONFIG }}
+      #     plugin-config: ${{ secrets.PLUGIN_CONFIG }}
