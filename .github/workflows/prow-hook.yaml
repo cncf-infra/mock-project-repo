@@ -15,7 +15,7 @@ on:
   discussion_comment:
   # pull_request:
   #   branches: ["main"]
-permissions: read-all|write-all
+permissions: write-all
 # permissions:
 #   actions: read|write|none
 #   checks: read|write|none
