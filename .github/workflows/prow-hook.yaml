@@ -46,11 +46,11 @@ jobs:
           path: |
             event.name
             event.json
-      # - uses: actions/checkout@v2
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
-      # - name: Start hook plugin action
-      #   uses: cncf-infra/prow-github-action@main
+      - uses: actions/checkout@v2
+      - name: Start hook plugin action
+        uses: cncf-infra/prow-github-action@main
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       #   with:
       #     hmac: ${{ secrets.HMAC }}
       #     hook-config: ${{ secrets.HOOK_CONFIG }}
