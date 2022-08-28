@@ -47,11 +47,12 @@ jobs:
             event.name
             event.json
       - uses: actions/checkout@v2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: Start pga (Prow Github Action)
         uses: cncf-infra/prow-github-action@main
       #   with:
+      #     token: ${{github.token}}
       #     hmac: ${{ secrets.HMAC }}
       #     hook-config: ${{ secrets.HOOK_CONFIG }}
       #     plugin-config: ${{ secrets.PLUGIN_CONFIG }}
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
