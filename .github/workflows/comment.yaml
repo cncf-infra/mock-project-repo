@@ -1,0 +1,26 @@
+on: issue_comment
+
+jobs:
+  pr_commented:
+    # This job only runs for pull request comments
+    name: PR comment
+    if: ${{ github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ghcr.io/cncf-infra/prow-github-action@sha256:bfbd095a574c9de53314fa17e9642750cacef5f85494dfaf9c69310b12e590fa
+      - run: |
+          echo A comment on PR $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+
+  issue_commented:
+    # This job only runs for issue comments
+    name: Issue comment
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ghcr.io/cncf-infra/prow-github-action@sha256:bfbd095a574c9de53314fa17e9642750cacef5f85494dfaf9c69310b12e590fa
+      - run: |
+          echo A comment on issue $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
