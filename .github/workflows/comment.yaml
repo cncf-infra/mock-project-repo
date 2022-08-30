@@ -7,7 +7,7 @@ jobs:
     if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - uses: ghcr.io/cncf-infra/prow-github-action@sha256:bfbd095a574c9de53314fa17e9642750cacef5f85494dfaf9c69310b12e590fa
+      - uses: ghcr.io/cncf-infra/prow-github-action
       - run: |
           echo A comment on PR $NUMBER
         env:
@@ -19,7 +19,7 @@ jobs:
     if: ${{ !github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - uses: ghcr.io/cncf-infra/prow-github-action@sha256:bfbd095a574c9de53314fa17e9642750cacef5f85494dfaf9c69310b12e590fa
+      - uses: ghcr.io/cncf-infra/prow-github-action
       - run: |
           echo A comment on issue $NUMBER
         env:
