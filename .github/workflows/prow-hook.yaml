@@ -47,8 +47,8 @@ jobs:
             event.name
             event.json
       - uses: actions/checkout@v2
-      # - name: Start pga (Prow Github Action)
-      #   uses: cncf-infra/prow-github-action@main
+      - name: Start pga (Prow Github Action)
+        uses: cncf-infra/prow-github-action@main
       #   with:
       #     token: ${{github.token}}
       #     hmac: ${{ secrets.HMAC }}
