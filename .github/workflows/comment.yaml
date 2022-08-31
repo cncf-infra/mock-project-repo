@@ -7,7 +7,7 @@ jobs:
     if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - uses: ghcr.io/cncf-infra/prow-github-action
+      - uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
       - run: |
           echo A comment on PR $NUMBER
         env:
@@ -19,7 +19,7 @@ jobs:
     if: ${{ !github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - uses: ghcr.io/cncf-infra/prow-github-action
+      - uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
       - run: |
           echo A comment on issue $NUMBER
         env:
