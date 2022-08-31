@@ -7,19 +7,23 @@ jobs:
     if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
-      - run: |
-          echo A comment on PR $NUMBER
+      - name: "Prow Github Actions for PR comment"
         env:
           NUMBER: ${{ github.event.issue.number }}
-
+          REPO_OAUTH_TOKEN : ${{${{ secrets.GITHUB_TOKEN }}}}
+        uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
+ 
   issue_commented:
     # This job only runs for issue comments
     name: Issue comment
     if: ${{ !github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
+      - name: "Prow Github Actions for Issue Comment"
       - uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+          REPO_OAUTH_TOKEN : ${{${{ secrets.GITHUB_TOKEN }}}}
       - run: |
           echo A comment on issue $NUMBER
         env:
