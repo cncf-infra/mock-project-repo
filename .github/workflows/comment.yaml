@@ -22,5 +22,5 @@ jobs:
       - name: "Prow Github Actions for Issue Comment"
         env:
           NUMBER: ${{ github.event.issue.number }}
-          REPO_OAUTH_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+          REPO_OAUTH_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
         uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
