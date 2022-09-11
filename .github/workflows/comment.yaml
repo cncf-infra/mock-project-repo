@@ -18,8 +18,8 @@ jobs:
         with:
           name: environment variables and event payload
           path: |
-            /ko-app/env
-            /ko-app/event.json
+            /github/workspace/env
+            /github/workspace/event.json
   issue_commented:
     # This job only runs for issue comments
     name: Issue comment
