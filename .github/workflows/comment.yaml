@@ -18,6 +18,8 @@ jobs:
         with:
           name: environment variables and event payload
           path: ${{ github.workspace }}/mock-project-repo
+      - name : machine ${{ github.workspace }}
+        run : "ls -lrt ${{ github.workspace }}"
   issue_commented:
     # This job only runs for issue comments
     name: Issue comment
