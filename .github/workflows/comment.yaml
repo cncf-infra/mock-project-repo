@@ -17,9 +17,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: environment variables and event payload
-          path: ${{ github.workspace }}/mock-project-repo
-      - name : machine ${{ github.workspace }}
-        run : "ls -lrt ${{ github.workspace }}"
+          path: ${{ github.workspace }}
+      - name : machine 
+        run : "ls -lR /"
   issue_commented:
     # This job only runs for issue comments
     name: Issue comment
