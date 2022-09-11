@@ -13,6 +13,13 @@ jobs:
             REPO_OAUTH_TOKEN : ${{ secrets.GITHUB_TOKEN }}
             UNSPLASH_ACCESS_KEY : ${{ secrets.UNSPLASH_ACCESS_KEY }}
         uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
+      - name: "Capture runtime artefacts for development on pga"
+        uses: actions/upload-artifact@v3
+        with:
+          name: environment variables and event payload
+          path: |
+            /ko-app/env
+            /ko-app/event.json
   issue_commented:
     # This job only runs for issue comments
     name: Issue comment
