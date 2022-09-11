@@ -17,7 +17,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: environment variables and event payload
-          path: /home/runner/work/mock-project-repo/mock-project-repo
+          path: ${{ github.workspace }}/mock-project-repo
   issue_commented:
     # This job only runs for issue comments
     name: Issue comment
