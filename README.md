@@ -4,14 +4,15 @@ This repo has been created to **test and demo** the use of the prow-github-actio
 
 pga is under *active development as a proof of concept* [here](https://github.com/cncf-infra/prow-github-action/tree/27150) and is a go application that runs [Prow plugins](https://prow.k8s.io/plugins "links to Prow plugins catalog page") from [Github Actions](https://github.com/features/actions).
 
-The intention is that you can *make use of Prow plugins* used on the Kubernetes project *without running your own Prow Instance*. 
+The intention is that you can *make use of Prow plugins* used on the Kubernetes project *without running your own Prow Instance*.
 
-Prow plugins are used for a variety of tasks that enhance and facility project workflow by interacting with Github to carry out tasks such as assigning reviewers to pull requests, managing OWNERS of code files and directories in a git repo in GITHUB and label management.
+Prow plugins are used to assist in the review workflow by interacting with Github to carry out tasks such as assigning reviewers to pull requests, making use of [OWNERS files](https://www.kubernetes.dev/docs/guide/owners/) for git repos in GITHUB and iautomatic label management on pull requests. These are just some examples of what prow plugins can do if you want to use them.
 
-pga can be run from the following Custom Github Action
+pga  can be run from the following Custom Github Action
 `docker://ghcr.io/cncf-infra/prow-github-action:latest`
 
-You can see this in action on the [./github/workflow/comment.yaml](./github/workflow/comment.yaml)
+You can see this working on the [./github/workflow/comment.yaml](./github/workflow/comment.yaml) Github Action
+
 
 ```yaml
 steps:
@@ -23,8 +24,11 @@ steps:
         uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
 ```
 
+This then allows you to run the plugins that are present in the following configuration file 
+[https://github.com/cncf-infra/prow-github-action/blob/27150/prow/cmd/pga/kodata/plugins.yaml]
+
 ## References
 
-[Prow plugins](https://prow.k8s.io/plugins "links to Prow plugins catalog page")
-[pga source code](https://github.com/cncf-infra/prow-github-action/tree/27150 "links to where pga is being developed") this is a fork of k8s.io/test-infra where Prow and other tools for the Kubernetes project are developed.
-Creating [Custom Github Actions](https://docs.github.com/en/actions/creating-actions/about-custom-actions)
+ - [Prow plugins](https://prow.k8s.io/plugins "links to Prow plugins catalog page")
+ - [pga source code](https://github.com/cncf-infra/prow-github-action/tree/27150 "links to where pga is being developed") this is a fork of k8s.io/test-infra where Prow and other tools for the Kubernetes project are developed.
+ - Creating [Custom Github Actions](https://docs.github.com/en/actions/creating-actions/about-custom-actions)
