@@ -4,7 +4,6 @@ jobs:
   pull_request:
     # This job only runs for pull request comments
     name: New PR
-    if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
       - name: "Prow Github Actions for PR comment"
