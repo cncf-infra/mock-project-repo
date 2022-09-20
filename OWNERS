@@ -1,14 +1,18 @@
 # See the OWNERS docs at https://go.k8s.io/owners
 
 approvers:
-  - hh
-  - RobertKielty
-emeritus_approvers:
-  - bernokl
-reviewers:
-  - RobertKielty
-  - hh
   - BobyMcBobs
+  - hh
+  - RobertKielty
+  - zachmandeville
+reviewers:
+  - bernokl
+  - BobyMcBobs
+  - cncf-ci
+  - hh
+  - Riaankl
+  - RobertKielty
+  - zachmandeville
 labels:
   - area/pga
   - area/cncf-project
