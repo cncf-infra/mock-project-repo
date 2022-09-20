@@ -1,0 +1,19 @@
+on: pull_request
+
+jobs:
+  pull_request:
+    # This job only runs for pull request comments
+    name: New PR
+    if: ${{ github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Prow Github Actions for PR comment"
+        env:
+            NUMBER: ${{ github.event.issue.number }}
+            REPO_OAUTH_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
+      - name: "Capture runtime artefacts for development on pga"
+        uses: actions/upload-artifact@v3
+        with:
+          name: environment variables and event payload
+          path: ${{ github.workspace }}
