@@ -5,6 +5,7 @@
 This repository contains a collection of Go programs and libraries that
 demonstrate the language, standard libraries, and tools.
 
+Usefule for people new to Go in general and also specific language features!
 ## Clone the project
 
 ```
