@@ -5,11 +5,7 @@ jobs:
     # This job only runs for pull request comments
     name: PR comment
     if: ${{ github.event.issue.pull_request }}
-    permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-      actions: write
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: "Prow Github Actions for PR comment"
