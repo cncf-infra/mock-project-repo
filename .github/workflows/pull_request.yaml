@@ -2,6 +2,7 @@ on: pull_request
 
 jobs:
   pull_request:
+    permissions: write-all
     # This job only runs for pull request comments
     name: New PR
     runs-on: ubuntu-latest

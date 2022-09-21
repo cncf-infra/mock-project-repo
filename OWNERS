@@ -1,15 +1,11 @@
 # See the OWNERS docs at https://go.k8s.io/owners
 
 approvers:
-  - BobyMcBobs
   - hh
-  - RobertKielty
-  - zachmandeville
 reviewers:
   - bernokl
   - BobyMcBobs
   - cncf-ci
-  - hh
   - Riaankl
   - RobertKielty
   - zachmandeville
