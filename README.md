@@ -25,6 +25,48 @@ steps:
 ```
 
 This then allows you to run the plugins that are present in the file https://github.com/cncf-infra/prow-github-action/blob/27150/prow/cmd/pga/kodata/plugins.yaml which is included in the ko built and published container, prow-github-action
+## Plugins configured on this repo
+```yaml
+plugins:
+  cncf-infra/mock-project-repo:
+    plugins:
+      - approve
+      - assign
+      - blunderbuss
+      - cat
+      - cla
+      - dog
+      - golint
+      - goose
+      - heart
+      - help
+      - hold
+      - invalidcommitmsg
+      - label
+      - lgtm
+      - lifecycle
+      - owners-label
+      - pony
+      - retitle
+      - shrug
+      - sigmention
+      - size
+      - skip
+      - transfer-issue
+      - trick-or-treat
+      - trigger
+      - verify-owners
+      - welcome
+      - wip
+      - yuks
+```
+
+For more details on the above plugins you can get more info in the Prow Plugin Catalog
+
+https://prow.k8s.io/plugins
+
+More details to follow.
+
 
 ## References
 
