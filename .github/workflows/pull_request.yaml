@@ -1,7 +1,7 @@
 on: pull_request
 
 jobs:
-  pull_request:
+  pull_request_target:
     permissions: write-all
     # This job only runs for pull request comments
     name: New PR
