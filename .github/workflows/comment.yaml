@@ -32,3 +32,8 @@ jobs:
           REPO_OAUTH_TOKEN : ${{ github.token }}
           UNSPLASH_ACCESS_KEY : ${{ secrets.UNSPLASH_ACCESS_KEY }}
         uses: docker://ghcr.io/cncf-infra/prow-github-action:latest
+      - name: "Capture runtime artefacts for development on pga"
+        uses: actions/upload-artifact@v3
+        with:
+          name: environment variables and event payload
+          path: ${{ github.workspace }}
