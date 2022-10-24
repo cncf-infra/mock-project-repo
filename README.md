@@ -2,7 +2,7 @@
 
 This repo has been created to **test and demo** the use of the prow-github-action, a custom github action that runs pga.
 
-pga is under *active development as a proof of concept* [here](https://github.com/cncf-infra/prow-github-action/tree/27150) and is a go application that runs [Prow plugins](https://prow.k8s.io/plugins "links to Prow plugins catalog page") from [Github Actions](https://github.com/features/actions).
+pga is under *active development as a proof of concept* [here](https://github.com/cncf-infra/prow-github-action/tree/github-action-client) and is a go application that runs [Prow plugins](https://prow.k8s.io/plugins "links to Prow plugins catalog page") from [Github Actions](https://github.com/features/actions).
 
 The intention is that you can *make use of Prow plugins* used on the Kubernetes project *without running your own Prow Instance*.
 
